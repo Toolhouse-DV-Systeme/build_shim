@@ -1,0 +1,8 @@
+*.efi
+*.EFI
+*.cab
+*.log
+*.cer
+*.EFI.test
+shim/
+testkeys

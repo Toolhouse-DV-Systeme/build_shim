@@ -1,0 +1,12 @@
+#!/bin/bash 
+
+if [ ! -e BOOTX64.EFI ] ; then
+build_shim
+fi
+
+rm BOOTX64.EFI.test
+
+# Create shim signed with testkeys for 
+if [ -e testkeys ] ; then
+sbsign --key ~/testkeys/DB_TEST.key --cert ~/testkeys/DB_TEST.pem --output BOOTX64.EFI.test BOOTX64.EFI
+fi

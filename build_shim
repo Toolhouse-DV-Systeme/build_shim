@@ -1,0 +1,30 @@
+#!/bin/bash 
+
+# Redirect output to log file
+rm build.log
+exec > >(tee -i build.log)
+exec 2>&1
+
+CERT=Th_2017.cer
+BRANCH=th-12
+OUTNAME=shim_thx64
+
+
+rm -rf shim
+rm BOOTX64.EFI
+rm $OUTNAME.efi
+rm $OUTNAME.cab
+
+
+git clone -b $BRANCH https://github.com/MiraySoftware/shim.git shim
+cp $CERT shim/
+
+cd shim
+export VENDOR_CERT_FILE=$CERT
+make
+
+cp shimx64.efi ../$OUTNAME.efi
+cd ..
+
+cp $OUTNAME.efi BOOTX64.EFI
+lcab BOOTX64.EFI $OUTNAME.cab
