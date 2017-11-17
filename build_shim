@@ -6,7 +6,7 @@ exec > >(tee -i build.log)
 exec 2>&1
 
 CERT=Th_2017.cer
-BRANCH=th-13
+BRANCH=th-12
 OUTNAME=shim_thx64
 
 
@@ -21,7 +21,7 @@ cp $CERT shim/
 
 cd shim
 export VENDOR_CERT_FILE=$CERT
-LIBDIR=/usr/lib EFI_PATH=/usr/lib make
+make
 
 cp shimx64.efi ../$OUTNAME.efi
 cd ..
