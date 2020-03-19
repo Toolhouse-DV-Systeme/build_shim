@@ -6,7 +6,7 @@ exec > >(tee -i build.log)
 exec 2>&1
 
 CERT=Th_2017.cer
-BRANCH=th-12
+BRANCH=th-15
 OUTNAME=shim_thx64
 
 
@@ -21,10 +21,15 @@ cp $CERT shim/
 
 cd shim
 export VENDOR_CERT_FILE=$CERT
+export LIBDIR=/usr/lib
+export EFI_PATH=$LIBDIR
+export DEFAULT_LOADER=grub.efi
 make
 
 cp shimx64.efi ../$OUTNAME.efi
 cd ..
+
+sha256sum -b $OUTNAME.efi > $OUTNAME.cksum
 
 cp $OUTNAME.efi BOOTX64.EFI
 lcab BOOTX64.EFI $OUTNAME.cab
