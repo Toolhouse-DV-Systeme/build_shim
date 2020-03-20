@@ -6,14 +6,15 @@ exec > >(tee -i build.log)
 exec 2>&1
 
 CERT=Th_2017.cer
-BRANCH=th-15
-OUTNAME=shim_thx64
+BRANCH=toolhouse-15
+OUTNAME=shim_toolhouse_x64
 
 
 rm -rf shim
 rm BOOTX64.EFI
 rm $OUTNAME.efi
 rm $OUTNAME.cab
+rm $OUTNAME.cksum
 
 
 git clone -b $BRANCH https://github.com/MiraySoftware/shim.git shim

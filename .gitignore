@@ -3,5 +3,6 @@
 *.cab
 *.log
 *.EFI.test
+*.cksum
 shim/
 testkeys
