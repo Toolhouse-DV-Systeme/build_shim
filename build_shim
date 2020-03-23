@@ -17,7 +17,7 @@ rm $OUTNAME.cab
 rm $OUTNAME.cksum
 
 
-git clone -b $BRANCH https://github.com/MiraySoftware/shim.git shim
+git clone -b $BRANCH https://github.com/Toolhouse-DV-Systeme/shim.git shim
 cp $CERT shim/
 
 cd shim
