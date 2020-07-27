@@ -25,7 +25,7 @@ export VENDOR_CERT_FILE=$CERT
 export LIBDIR=/usr/lib
 export EFI_PATH=$LIBDIR
 export DEFAULT_LOADER=grub.efi
-make
+make ENABLE_HTTPBOOT=1
 
 cp shimx64.efi ../$OUTNAME.efi
 cd ..
